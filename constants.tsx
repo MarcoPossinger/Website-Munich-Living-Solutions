@@ -1,6 +1,13 @@
 
 import { ProfileData, TranslationStrings } from './types';
 
+// Wir importieren die Bilder direkt, damit Vite sie korrekt verarbeitet.
+// Die @ts-ignore Kommentare verhindern, dass TypeScript sich über die fehlenden Typ-Definitionen der Bilddateien beschwert.
+// @ts-ignore
+import logoUrl from './logo.svg';
+// @ts-ignore
+import portraitUrl from './portrait.jpg';
+
 export const USER_PROFILE: ProfileData = {
   firstName: "Marco",
   lastName: "Possinger",
@@ -36,9 +43,8 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
   }
 };
 
-// Hier definieren wir die festen Dateinamen
 export const IMAGES = {
   background: "",
-  logo: "/logo.svg", // Stelle sicher, dass die Datei so heißt
-  profile: "/portrait.jpg" // Stelle sicher, dass die Datei so heißt
+  logo: logoUrl,
+  profile: portraitUrl
 };

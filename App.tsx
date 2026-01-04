@@ -7,8 +7,6 @@ import LanguageSwitcher from './components/LanguageSwitcher';
 
 const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('de');
-  const [profileImg, setProfileImg] = useState<string | null>(IMAGES.profile);
-  const [logoImg, setLogoImg] = useState<string | null>(IMAGES.logo);
   const [copySuccess, setCopySuccess] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   
@@ -17,9 +15,9 @@ const App: React.FC = () => {
   const handleDownloadVCard = async () => {
     setIsDownloading(true);
     try {
-      await generateVCard(USER_PROFILE, profileImg);
+      await generateVCard(USER_PROFILE, IMAGES.profile);
     } catch (e) {
-      console.error(e);
+      console.error("vCard Download Fehler:", e);
     } finally {
       setIsDownloading(false);
     }
@@ -71,15 +69,19 @@ const App: React.FC = () => {
 
           <div className="p-8 pb-10 flex flex-col items-center text-center">
             
-            {/* Profilbild mit Premium-Rahmen */}
+            {/* Profilbild */}
             <div className="relative mt-2 mb-6">
               <div className="relative w-44 h-44 rounded-full border border-white/10 p-1 shadow-[0_0_50px_rgba(255,255,255,0.05)]">
                 <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 border border-white/5">
-                  {profileImg ? (
+                  {IMAGES.profile ? (
                     <img 
-                      src={profileImg} 
+                      src={IMAGES.profile} 
                       alt={USER_PROFILE.firstName} 
                       className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                      onError={(e) => {
+                        console.error("Fehler beim Laden von portrait.jpg");
+                        e.currentTarget.style.display = 'none';
+                      }}
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center opacity-10">
@@ -138,11 +140,15 @@ const App: React.FC = () => {
             {/* Logo / Impressum Area */}
             <div className="mt-10 w-full pt-8 border-t border-white/[0.03]">
               <div className="flex flex-col items-center">
-                {logoImg && (
+                {IMAGES.logo && (
                   <img 
-                    src={logoImg} 
+                    src={IMAGES.logo} 
                     alt="Logo" 
                     className="max-h-12 w-auto object-contain mb-4 opacity-70 grayscale hover:grayscale-0 transition-all duration-700"
+                    onError={(e) => {
+                        console.error("Fehler beim Laden von logo.svg");
+                        e.currentTarget.style.display = 'none';
+                    }}
                   />
                 )}
                 <div className="text-[9px] text-zinc-600 leading-relaxed tracking-widest uppercase">
