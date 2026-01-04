@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Language } from './types';
 import { USER_PROFILE, TRANSLATIONS, IMAGES } from './constants';
 import { generateVCard } from './utils/vCard';
@@ -72,22 +72,24 @@ const App: React.FC = () => {
             {/* Profilbild */}
             <div className="relative mt-2 mb-6">
               <div className="relative w-44 h-44 rounded-full border border-white/10 p-1 shadow-[0_0_50px_rgba(255,255,255,0.05)]">
-                <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 border border-white/5">
-                  {IMAGES.profile ? (
-                    <img 
-                      src={IMAGES.profile} 
-                      alt={USER_PROFILE.firstName} 
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                      onError={(e) => {
-                        console.error("Fehler beim Laden von portrait.jpg");
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center opacity-10">
-                       <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7-7h14a7 7 0 00-7-7z" /></svg>
-                    </div>
-                  )}
+                <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 border border-white/5 flex items-center justify-center">
+                  <img 
+                    src={IMAGES.profile} 
+                    alt={USER_PROFILE.firstName} 
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    loading="eager"
+                    onError={(e) => {
+                      // Fallback: Falls das Bild nicht geladen werden kann, zeigen wir ein Icon
+                      e.currentTarget.style.display = 'none';
+                      const parent = e.currentTarget.parentElement;
+                      if (parent && !parent.querySelector('.profile-fallback')) {
+                        const div = document.createElement('div');
+                        div.className = 'profile-fallback flex items-center justify-center w-full h-full text-white/10';
+                        div.innerHTML = '<svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7-7h14a7 7 0 00-7-7z" /></svg>';
+                        parent.appendChild(div);
+                      }
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -140,17 +142,11 @@ const App: React.FC = () => {
             {/* Logo / Impressum Area */}
             <div className="mt-10 w-full pt-8 border-t border-white/[0.03]">
               <div className="flex flex-col items-center">
-                {IMAGES.logo && (
-                  <img 
-                    src={IMAGES.logo} 
-                    alt="Logo" 
-                    className="max-h-12 w-auto object-contain mb-4 opacity-70 grayscale hover:grayscale-0 transition-all duration-700"
-                    onError={(e) => {
-                        console.error("Fehler beim Laden von logo.svg");
-                        e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                )}
+                <img 
+                  src={IMAGES.logo} 
+                  alt="Munich Living Solutions Logo" 
+                  className="max-h-12 w-auto object-contain mb-4 opacity-70 grayscale hover:grayscale-0 transition-all duration-700"
+                />
                 <div className="text-[9px] text-zinc-600 leading-relaxed tracking-widest uppercase">
                   <p>{USER_PROFILE.address}</p>
                   <p className="opacity-40 mt-1">{USER_PROFILE.legalEntity}</p>
