@@ -36,8 +36,9 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
   }
 };
 
+// Hier definieren wir die festen Dateinamen
 export const IMAGES = {
   background: "",
-  logo: "", 
-  profile: "" 
+  logo: "/logo.svg", // Stelle sicher, dass die Datei so heißt
+  profile: "/portrait.jpg" // Stelle sicher, dass die Datei so heißt
 };
