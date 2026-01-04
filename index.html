@@ -16,11 +16,16 @@
             overflow-x: hidden;
             background-color: #000000;
         }
+        /* Versteckt Scrollbars für ein cleanes App-Gefühl */
         ::-webkit-scrollbar {
             display: none;
         }
         .font-serif-custom {
             font-family: 'Libre Baskerville', serif;
+        }
+        /* Sanfter Hintergrundverlauf für Hochwertigkeit */
+        .bg-luxury {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
         }
     </style>
 <script type="importmap">
@@ -35,7 +40,7 @@
 }
 </script>
 </head>
-<body class="bg-black">
+<body class="bg-luxury">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>
