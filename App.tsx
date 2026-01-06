@@ -70,7 +70,7 @@ const App: React.FC = () => {
             <div className="w-48 h-48 rounded-full border border-white/10 p-1.5 bg-gradient-to-b from-white/20 to-transparent shadow-2xl">
               <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 border-2 border-black/50">
                 <img 
-                  src={resolveImagePath(IMAGES.profile)} 
+                  src="portrait.jpg"
                   alt={USER_PROFILE.firstName} 
                   className="w-full h-full object-cover"
                   onError={(e) => {
