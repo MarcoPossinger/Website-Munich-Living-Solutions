@@ -74,7 +74,7 @@ const App: React.FC = () => {
               <div className="relative w-44 h-44 rounded-full border border-white/10 p-1 shadow-[0_0_50px_rgba(255,255,255,0.05)]">
                 <div className="w-full h-full rounded-full overflow-hidden bg-zinc-900 border border-white/5 flex items-center justify-center">
                   <img 
-                    src={IMAGES.profile} 
+                    src="portrait.jpg" 
                     alt={USER_PROFILE.firstName} 
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                     loading="eager"
