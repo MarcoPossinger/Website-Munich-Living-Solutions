@@ -2,8 +2,8 @@
 import { ProfileData, TranslationStrings } from './types';
 
 export const USER_PROFILE: ProfileData = {
-  firstName: "Timo",
-  lastName: "Briem",
+  firstName: "Marco",
+  lastName: "Possinger",
   title: {
     de: "Gründer und Geschäftsführer",
     en: "Founder & Managing Director"
@@ -11,8 +11,8 @@ export const USER_PROFILE: ProfileData = {
   brand: "Munich Living Solutions",
   legalEntity: "BPD Briem Property Development GmbH",
   phone: "+4915783698237",
-  email: "timo.briem@munichlivingsolutions.de",
-  linkedin: "https://www.linkedin.com/in/marco-briem-465323201/?originalSubdomain=de", 
+  email: "marco.possinger@munichlivingsolutions.de",
+  linkedin: "https://www.linkedin.com/in/marco-possinger-465323201/?originalSubdomain=de", 
   website: "https://www.munichlivingsolutions.de",
   address: "Bürgermeister-Schneider-Weg 163, 85579 Neubiberg"
 };
