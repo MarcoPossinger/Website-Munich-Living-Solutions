@@ -83,7 +83,7 @@ const App: React.FC = () => {
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(90deg, rgba(184,134,11,0.00) 0%, rgba(184,134,11,0.00) 18%, rgba(184,134,11,0.90) 45%, rgba(184,134,11,0.90) 55%, rgba(184,134,11,0.00) 82%, rgba(184,134,11,0.00) 100%)",
+                    "linear-gradient(90deg, rgba(184,134,11,0.00) 10%, rgba(184,134,11,0.00) 18%, rgba(184,134,11,0.90) 45%, rgba(184,134,11,0.90) 55%, rgba(184,134,11,0.00) 82%, rgba(184,134,11,0.00) 100%)",
                 }}
               />
 
