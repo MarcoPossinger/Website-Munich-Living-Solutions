@@ -78,13 +78,24 @@ const App: React.FC = () => {
           <div className="w-full flex justify-center mb-10 pt-4">
             <div className="relative w-full h-12 flex items-center justify-center">
               {/* Banner – full width, center strong, fades outward */}
+              {/* Banner Layer 1: strong core behind logo */}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(90deg, rgba(184,134,11,0.0) 0%, rgba(184,134,11,0.22) 34%, rgba(184,134,11,0.38) 50%, rgba(184,134,11,0.22) 66%, rgba(184,134,11,0.0) 100%)",
+                    "linear-gradient(90deg, rgba(184,134,11,0.00) 0%, rgba(184,134,11,0.00) 34%, rgba(184,134,11,0.85) 50%, rgba(184,134,11,0.00) 66%, rgba(184,134,11,0.00) 100%)",
                 }}
               />
+              
+              {/* Banner Layer 2: wide fade outwards */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(184,134,11,0.00) 0%, rgba(184,134,11,0.30) 30%, rgba(184,134,11,0.55) 50%, rgba(184,134,11,0.30) 70%, rgba(184,134,11,0.00) 100%)",
+                }}
+              />
+
           
               {/* Logo */}
               <div className="relative z-10 h-12 px-6 flex items-center justify-center">
