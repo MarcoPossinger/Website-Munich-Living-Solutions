@@ -20,9 +20,9 @@ const App: React.FC = () => {
   }, []);
 
   const resolveImagePath = (path: string) => {
-    if (path.startsWith('http') || path.startsWith('data:')) return path;
-    return `./${path}`;
-  };
+  if (path.startsWith('http') || path.startsWith('data:') || path.startsWith('/')) return path;
+  return `/${path.replace(/^\.?\//, '')}`;
+};
 
   const handleDownloadVCard = async () => {
     setIsDownloading(true);
