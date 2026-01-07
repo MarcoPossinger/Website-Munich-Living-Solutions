@@ -13,7 +13,7 @@ export const USER_PROFILE: ProfileData = {
   managingDirector: "Marco Possinger",
   phone: "+49 157 83698237",
   email: "marco.possinger@munichlivingsolutions.de",
-  linkedin: "https://www.linkedin.com/in/marco-possinger-465323201/",
+  linkedin: "https://www.linkedin.com/in/marco-briem-465323201/",
   website: "https://www.munichlivingsolutions.de",
   address: "Bürgermeister-Schneider-Weg 163, 85579 Neubiberg",
   registerCourt: "Amtsgericht München",
