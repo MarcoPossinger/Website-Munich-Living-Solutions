@@ -24,7 +24,7 @@ export const USER_PROFILE: ProfileData = {
 export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
   de: {
     saveContact: "Kontakt speichern",
-    call: "Anrufen",
+    call: "Telefon",
     email: "E-Mail",
     linkedin: "LinkedIn",
     back: "Zurück",
@@ -36,7 +36,7 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
   },
   en: {
     saveContact: "Save Contact",
-    call: "Call",
+    call: "Phone",
     email: "Email",
     linkedin: "LinkedIn",
     back: "Back",
