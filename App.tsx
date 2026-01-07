@@ -76,7 +76,7 @@ const App: React.FC = () => {
 
           {/* 1. Logo Header */}
           <div className="w-full flex justify-center mb-10 pt-4">
-            <div className="h-12 w-auto flex items-center justify-center opacity-100 transition-opacity duration-500">
+            <div className="h-20 w-auto flex items-center justify-center opacity-100 transition-opacity duration-500">
               <img 
                 src={resolveImagePath(IMAGES.logo)} 
                 alt={USER_PROFILE.brand} 
@@ -99,7 +99,7 @@ const App: React.FC = () => {
                 <img 
                   src={resolveImagePath(IMAGES.profile)} 
                   alt={USER_PROFILE.firstName} 
-                  className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover object-[center_30%] grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${USER_PROFILE.firstName}+${USER_PROFILE.lastName}&background=111&color=fff&size=512`;
                   }}
