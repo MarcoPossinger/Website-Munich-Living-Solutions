@@ -83,11 +83,10 @@ const App: React.FC = () => {
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(90deg, rgba(184,134,11,0.00) 0%, rgba(184,134,11,0.00) 10%, rgba(184,134,11,0.90) 20%, rgba(184,134,11,0.90) 30%, rgba(184,134,11,0.00) 40%, rgba(184,134,11,0.00) 50%, rgba(184,134,11,0.90) 60%, rgba(184,134,11,0.90) 70%, rgba(184,134,11,0.00) 80%, rgba(184,134,11,0.00) 90%, rgba(184,134,11,0.00) 100%)",
+                    "linear-gradient(90deg, rgba(184,134,11,0.00) 0%, rgba(184,134,11,0.20) 10%, rgba(184,134,11,0.40) 20%, rgba(184,134,11,0.70) 30%, rgba(184,134,11,0.95) 40%, rgba(184,134,11,0.95) 60%, rgba(184,134,11,0.70) 70%, rgba(184,134,11,0.40) 80%, rgba(184,134,11,0.20) 90%, rgba(184,134,11,0.00) 100%)",
                 }}
               />
 
-              
               {/* Logo */}
               <div className="relative z-10 h-12 px-6 flex items-center justify-center">
                 <img
