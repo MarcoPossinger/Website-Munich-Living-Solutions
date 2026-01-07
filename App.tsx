@@ -67,7 +67,7 @@ const App: React.FC = () => {
           {/* Share Button */}
           <button
             onClick={handleShare}
-            className="absolute top-[3.75rem] right-8 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all active:scale-90 z-10"
+            className="absolute top-[5rem] right-8 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all active:scale-90 z-10"
           >
 
             <svg className={`w-4 h-4 ${copySuccess ? 'text-green-400' : 'text-white/60'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
