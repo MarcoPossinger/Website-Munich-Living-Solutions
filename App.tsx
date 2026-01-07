@@ -92,7 +92,7 @@ const App: React.FC = () => {
                 <img
                   src={resolveImagePath(IMAGES.logo)}
                   alt={USER_PROFILE.brand}
-                  className="h-full w-auto object-contain opacity-80"
+                  className="h-full w-auto object-contain opacity-30"
                   onError={(e) => {
                     (e.target as HTMLImageElement).parentElement!.innerHTML = `
                       <div class="border-y border-white/20 py-2 px-4">
