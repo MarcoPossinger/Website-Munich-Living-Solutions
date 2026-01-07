@@ -76,19 +76,34 @@ const App: React.FC = () => {
 
 {/* 1. Logo Header */}
 <div className="w-full flex justify-center mb-10 pt-4">
-  {/* Banner */}
-  <div className="w-full flex justify-center">
-    <div className="relative w-full max-w-[360px] h-12 flex items-center justify-center">
-      
-      {/* Background Banner */}
-      <div
-        className="absolute inset-0 rounded-xl border border-white/10"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(184,134,11,0.20) 0%, rgba(184,134,11,0.12) 35%, rgba(184,134,11,0.12) 65%, rgba(184,134,11,0.20) 100%)",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.35)",
+  <div className="relative w-full h-12 flex items-center justify-center">
+    
+    {/* Banner – full width, center strong, fades outward */}
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(184,134,11,0.0) 0%, rgba(184,134,11,0.25) 35%, rgba(184,134,11,0.35) 50%, rgba(184,134,11,0.25) 65%, rgba(184,134,11,0.0) 100%)",
+      }}
+    />
+
+    {/* Logo */}
+    <div className="relative z-10 h-12 px-6 flex items-center justify-center">
+      <img
+        src={resolveImagePath(IMAGES.logo)}
+        alt={USER_PROFILE.brand}
+        className="h-full w-auto object-contain"
+        onError={(e) => {
+          (e.target as HTMLImageElement).parentElement!.innerHTML = `
+            <div class="border-y border-white/20 py-2 px-4">
+              <span class="text-[10px] tracking-[0.4em] text-white/60 uppercase font-bold">${USER_PROFILE.brand}</span>
+            </div>
+          `;
         }}
       />
+    </div>
+  </div>
+</div>
 
       {/* Logo sits on top */}
       <div className="relative z-10 h-12 px-6 flex items-center justify-center">
