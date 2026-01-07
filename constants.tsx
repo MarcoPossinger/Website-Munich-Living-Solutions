@@ -50,6 +50,6 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
 
 export const IMAGES = {
   background: "",
-  logo: "logo.svg",
-  profile: "portrait.jpg" 
+  logo: "/logo.svg",
+  profile: "/portrait.jpg" 
 };
