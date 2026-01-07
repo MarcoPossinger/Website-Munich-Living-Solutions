@@ -65,9 +65,9 @@ const App: React.FC = () => {
         <div className={`relative bg-[#0d0d0d] rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] border border-white/[0.06] overflow-hidden flex flex-col items-center p-8 md:p-10 text-center transition-all duration-1000 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           
           {/* Share Button */}
-          <button 
+          <button
             onClick={handleShare}
-            className="absolute top-[3.625rem] right-8 p-2.5 rounded-full bg-black/35 backdrop-blur-md border border-white/10 hover:bg-black/50 transition-all active:scale-90 z-10"
+            className="absolute top-[3.75rem] right-8 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all active:scale-90 z-10"
           >
 
             <svg className={`w-4 h-4 ${copySuccess ? 'text-green-400' : 'text-white/60'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
