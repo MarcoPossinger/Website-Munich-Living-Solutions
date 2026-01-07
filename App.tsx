@@ -144,9 +144,10 @@ const App: React.FC = () => {
 
           {/* 3. Name & Titel */}
           <div className="mb-10 w-full px-4">
-            <h1 className="text-[28px] md:text-[32px] font-bold tracking-tight text-white mb-2 leading-tight">
-              {USER_PROFILE.firstName} {USER_PROFILE.lastName}
-            </h1>
+           <h1 className="text-[28px] md:text-[32px] font-bold tracking-[0.02em] text-white mb-2 leading-tight">
+          {USER_PROFILE.firstName} {USER_PROFILE.lastName}
+        </h1>
+
             <p className="text-zinc-400 text-[10px] tracking-[0.25em] uppercase font-semibold mb-6">
               {USER_PROFILE.title[lang]}
             </p>
