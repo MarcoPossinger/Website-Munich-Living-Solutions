@@ -105,6 +105,7 @@ const App: React.FC = () => {
   </div>
 </div>
 
+
       {/* Logo sits on top */}
       <div className="relative z-10 h-12 px-6 flex items-center justify-center">
         <img
