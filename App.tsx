@@ -64,16 +64,34 @@ const App: React.FC = () => {
         {/* Hauptkarte */}
         <div className={`relative bg-[#0d0d0d] rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] border border-white/[0.06] overflow-hidden flex flex-col items-center p-8 md:p-10 text-center transition-all duration-1000 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
           
-          {/* Share Button */}
-          <button
-            onClick={handleShare}
-            className="absolute top-[8rem] right-8 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all active:scale-90 z-10"
-          >
+      {/* Share Button */}
+      <button
+        onClick={handleShare}
+        className="absolute top-[8rem] right-8 p-2.5 rounded-full
+                   bg-white/[0.04] backdrop-blur-md
+                   border border-white/15
+                   hover:bg-white/15 transition-all
+                   active:scale-90 z-10"
+      >
+        <svg
+          className={`w-3.5 h-3.5 transition-colors ${
+            copySuccess
+              ? 'text-green-400'
+              : 'text-white/40 hover:text-white/70'
+          }`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+          />
+        </svg>
+      </button>
 
-            <svg className={`w-4 h-4 ${copySuccess ? 'text-green-400' : 'text-white/60'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-            </svg>
-          </button>
 
           {/* 1. Logo Header */}
           <div className="w-full flex justify-center mb-10 pt-4">
