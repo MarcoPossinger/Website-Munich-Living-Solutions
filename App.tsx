@@ -74,49 +74,36 @@ const App: React.FC = () => {
             </svg>
           </button>
 
-{/* 1. Logo Header */}
-<div className="w-full flex justify-center mb-10 pt-4">
-  <div className="relative w-full h-12 flex items-center justify-center">
-    
-    {/* Banner – full width, center strong, fades outward */}
-    <div
-      className="absolute inset-0"
-      style={{
-        background:
-          "linear-gradient(90deg, rgba(184,134,11,0.0) 0%, rgba(184,134,11,0.25) 35%, rgba(184,134,11,0.35) 50%, rgba(184,134,11,0.25) 65%, rgba(184,134,11,0.0) 100%)",
-      }}
-    />
-
-{/* 1. Logo Header */}
-<div className="w-full flex justify-center mb-10 pt-4">
-  <div className="relative w-full h-12 flex items-center justify-center">
-
-    {/* Banner – full width, center strong, fades outward */}
-    <div
-      className="absolute inset-0"
-      style={{
-        background:
-          "linear-gradient(90deg, rgba(184,134,11,0.0) 0%, rgba(184,134,11,0.22) 34%, rgba(184,134,11,0.38) 50%, rgba(184,134,11,0.22) 66%, rgba(184,134,11,0.0) 100%)",
-      }}
-    />
-
-    {/* Logo */}
-    <div className="relative z-10 h-12 px-6 flex items-center justify-center">
-      <img
-        src={resolveImagePath(IMAGES.logo)}
-        alt={USER_PROFILE.brand}
-        className="h-full w-auto object-contain"
-        onError={(e) => {
-          (e.target as HTMLImageElement).parentElement!.innerHTML = `
-            <div class="border-y border-white/20 py-2 px-4">
-              <span class="text-[10px] tracking-[0.4em] text-white/60 uppercase font-bold">${USER_PROFILE.brand}</span>
+          {/* 1. Logo Header */}
+          <div className="w-full flex justify-center mb-10 pt-4">
+            <div className="relative w-full h-12 flex items-center justify-center">
+              {/* Banner – full width, center strong, fades outward */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(90deg, rgba(184,134,11,0.0) 0%, rgba(184,134,11,0.22) 34%, rgba(184,134,11,0.38) 50%, rgba(184,134,11,0.22) 66%, rgba(184,134,11,0.0) 100%)",
+                }}
+              />
+          
+              {/* Logo */}
+              <div className="relative z-10 h-12 px-6 flex items-center justify-center">
+                <img
+                  src={resolveImagePath(IMAGES.logo)}
+                  alt={USER_PROFILE.brand}
+                  className="h-full w-auto object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).parentElement!.innerHTML = `
+                      <div class="border-y border-white/20 py-2 px-4">
+                        <span class="text-[10px] tracking-[0.4em] text-white/60 uppercase font-bold">${USER_PROFILE.brand}</span>
+                      </div>
+                    `;
+                  }}
+                />
+              </div>
             </div>
-          `;
-        }}
-      />
-    </div>
-  </div>
-</div>
+          </div>
+
 
 
           {/* 2. Profilbild */}
