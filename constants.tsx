@@ -11,7 +11,7 @@ export const USER_PROFILE: ProfileData = {
   brand: "Munich Living Solutions",
   legalEntity: "BPD Briem Property Development GmbH",
   managingDirector: "Marco Possinger",
-  phone: "+4915783698237",
+  phone: "+49 157 83698237",
   email: "marco.possinger@munichlivingsolutions.de",
   linkedin: "https://www.linkedin.com/in/marco-possinger-465323201/?originalSubdomain=de", 
   website: "https://www.munichlivingsolutions.de",
