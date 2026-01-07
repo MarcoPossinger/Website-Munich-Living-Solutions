@@ -10,11 +10,15 @@ export const USER_PROFILE: ProfileData = {
   },
   brand: "Munich Living Solutions",
   legalEntity: "BPD Briem Property Development GmbH",
+  managingDirector: "Marco Possinger",
   phone: "+4915783698237",
   email: "marco.possinger@munichlivingsolutions.de",
   linkedin: "https://www.linkedin.com/in/marco-possinger-465323201/?originalSubdomain=de", 
   website: "https://www.munichlivingsolutions.de",
-  address: "Bürgermeister-Schneider-Weg 163, 85579 Neubiberg"
+  address: "Bürgermeister-Schneider-Weg 163, 85579 Neubiberg",
+  registerCourt: "Amtsgericht München",
+  registerNumber: "HRB 283403",
+  vatId: "DE360600844"
 };
 
 export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
@@ -24,7 +28,11 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
     email: "E-Mail",
     linkedin: "LinkedIn",
     back: "Zurück",
-    downloadVCard: "vCard laden"
+    downloadVCard: "vCard laden",
+    imprint: "Impressum",
+    privacy: "Datenschutz",
+    close: "Schließen",
+    whatsapp: "WhatsApp"
   },
   en: {
     saveContact: "Save Contact",
@@ -32,7 +40,11 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
     email: "Email",
     linkedin: "LinkedIn",
     back: "Back",
-    downloadVCard: "Download vCard"
+    downloadVCard: "Download vCard",
+    imprint: "Imprint",
+    privacy: "Privacy Policy",
+    close: "Close",
+    whatsapp: "WhatsApp"
   }
 };
 

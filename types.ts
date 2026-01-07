@@ -10,11 +10,15 @@ export interface ProfileData {
   };
   brand: string;
   legalEntity: string;
+  managingDirector: string;
   phone: string;
   email: string;
   linkedin: string;
   website: string;
   address: string;
+  registerCourt: string;
+  registerNumber: string;
+  vatId: string;
 }
 
 export interface TranslationStrings {
@@ -24,4 +28,8 @@ export interface TranslationStrings {
   linkedin: string;
   back: string;
   downloadVCard: string;
+  imprint: string;
+  privacy: string;
+  close: string;
+  whatsapp: string;
 }
