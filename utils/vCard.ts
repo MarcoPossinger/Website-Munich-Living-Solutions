@@ -59,8 +59,8 @@ export const generateVCard = async (
     'VERSION:3.0',
     `FN:${escapeVCardText(`${firstName} ${lastName}`.trim())}`,
     `N:${escapeVCardText(lastName)};${escapeVCardText(firstName)};;;`,
-    `ORG:${escapeVCardText(profile.legalEntity ?? '')}`,
-    `TITLE:${escapeVCardText(`${profile.title?.de ?? ''} / ${profile.brand ?? ''}`.trim())}`,
+    `ORG:${escapeVCardText(profile.brand ?? '')}`,
+    `TITLE:${escapeVCardText(profile.title?.de ?? '')}`,
     `TEL;TYPE=CELL,VOICE:${escapeVCardText(profile.phone ?? '')}`,
     `EMAIL;TYPE=PREF,INTERNET:${escapeVCardText(profile.email ?? '')}`,
     // ADR in one-line form (kept as you had it)
@@ -76,10 +76,12 @@ export const generateVCard = async (
   // NOTE: must use escaped newlines (\\n) in vCard 3.0
   const brand = profile.brand ?? '';
   const linkedin = profile.linkedin ?? '';
-  const noteLines = [
-    `Firma: ${brand}`,
-    linkedin ? `LinkedIn: ${linkedin}` : '',
-  ].filter(Boolean);
+  const legal = profile.legalEntity ?? '';
+const noteLines = [
+  brand ? `Marke: ${brand}` : '',
+  legal ? `Rechtsträger: ${legal}` : '',
+  linkedin ? `LinkedIn: ${linkedin}` : '',
+].filter(Boolean);
 
   if (noteLines.length) {
     vcardParts.push(`NOTE:${escapeVCardText(noteLines.join('\n'))}`);
