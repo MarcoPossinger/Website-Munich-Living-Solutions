@@ -27,7 +27,7 @@ const App: React.FC = () => {
   const handleDownloadVCard = async () => {
     setIsDownloading(true);
     try {
-      await generateVCard(USER_PROFILE, resolveImagePath(IMAGES.profile));
+      await generateVCard(USER_PROFILE, resolveImagePath(USER_PROFILE.profileImage));
     } catch (e) {
       console.error("vCard Fehler:", e);
     } finally {
