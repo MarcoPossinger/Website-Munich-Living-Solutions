@@ -45,7 +45,7 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
               <div>
                 <h3 className="text-white font-bold mb-2 uppercase text-[10px] tracking-widest">Kontakt</h3>
                 <p>Telefon: {profile.phone}</p>
-                <p>E-Mail: {profile.email}</p>
+                <p>E-Mail: {{profile.imprintEmail || profile.email}}</p>
               </div>
               <div>
                 <h3 className="text-white font-bold mb-2 uppercase text-[10px] tracking-widest">Registereintrag</h3>
