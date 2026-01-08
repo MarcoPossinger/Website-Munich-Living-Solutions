@@ -1,4 +1,3 @@
-
 import { ProfileData, TranslationStrings } from './types';
 
 export const USER_PROFILE: ProfileData = {
@@ -14,11 +13,12 @@ export const USER_PROFILE: ProfileData = {
   phone: "+49 157 83698237",
   email: "marco.possinger@munichlivingsolutions.de",
   linkedin: "https://www.linkedin.com/in/marco-briem-465323201/",
-  //website: "https://www.munichlivingsolutions.de",
+  // website bewusst weggelassen – richtig so
   address: "Bürgermeister-Schneider-Weg 163, 85579 Neubiberg",
   registerCourt: "Amtsgericht München",
   registerNumber: "HRB 283403",
-  vatId: "DE360600844"
+  vatId: "DE360600844",
+  profileImage: "/images/profile-contact.jpg",
 };
 
 export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
@@ -51,5 +51,6 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
 export const IMAGES = {
   background: "",
   logo: "/logo.svg",
-  profile: "/portrait.jpg" 
+  profile: "/portrait.jpg" // optional, getrennt vom vCard-Bild – okay
 };
+
