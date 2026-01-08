@@ -13,6 +13,7 @@ export interface ProfileData {
   managingDirector: string;
   phone: string;
   email: string;
+  imprintEmail?: string;
   linkedin: string;
   website: string;
   address: string;
