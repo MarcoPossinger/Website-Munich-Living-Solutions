@@ -11,7 +11,8 @@ export const USER_PROFILE: ProfileData = {
   legalEntity: "BPD Briem Property Development GmbH",
   managingDirector: "Marco Possinger",
   phone: "+49 157 83698237",
-  email: "marco.possinger@munichlivingsolutions.de",
+  email: "marco.possinger@munichlivingsolutions.de",   // für vCard & Buttons
+  imprintEmail: "info@munichlivingsolutions.de",       // für Impressum & Datenschutz
   linkedin: "https://www.linkedin.com/in/marco-briem-465323201/",
   // website bewusst weggelassen – richtig so
   address: "Bürgermeister-Schneider-Weg 163, 85579 Neubiberg",
