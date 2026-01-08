@@ -19,6 +19,7 @@ export interface ProfileData {
   registerCourt: string;
   registerNumber: string;
   vatId: string;
+  profileImage?: string;
 }
 
 export interface TranslationStrings {
