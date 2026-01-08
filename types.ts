@@ -15,7 +15,7 @@ export interface ProfileData {
   email: string;
   imprintEmail?: string;
   linkedin: string;
-  website: string;
+  website?: string;
   address: string;
   registerCourt: string;
   registerNumber: string;
