@@ -79,6 +79,8 @@ E-Mail: info@munichlivingsolutions.de
         content: `
 Dies ist eine Beispiel-Datenschutzerklärung.
 Hier kommt dein vollständiger deutscher Datenschutztext rein.
+
+Stand: {{DATE}}
         `,
       },
     },
@@ -122,6 +124,8 @@ Email: info@munichlivingsolutions.de
         content: `
 This is a sample privacy policy.
 Your full English privacy policy text goes here.
+
+Status: {{DATE}}
         `,
       },
     },
