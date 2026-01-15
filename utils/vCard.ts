@@ -17,10 +17,9 @@ const escapeVCardText = (value: string) =>
 const getBase64FromUrl = async (
   url: string
 ): Promise<{ data: string; mime: string } | null> => {
-  // Data-URL already contains base64
   if (url.startsWith('data:')) {
     const [header, data] = url.split('base64,');
-    const mimeSubtype = header.split(':')[1].split(';')[0].split('/')[1]; // jpeg/png/...
+    const mimeSubtype = header.split(':')[1].split(';')[0].split('/')[1];
     const mime = (mimeSubtype || 'jpeg').toUpperCase();
     return { data, mime };
   }
@@ -32,7 +31,7 @@ const getBase64FromUrl = async (
     return await new Promise((resolve) => {
       const reader = new FileReader();
       reader.onloadend = () => {
-        const result = reader.result as string; // data:<mime>;base64,<...>
+        const result = reader.result as string;
         const base64 = result.split('base64,')[1] ?? '';
         const mimeSubtype = (blob.type.split('/')[1] ?? 'jpeg').toUpperCase();
         resolve({ data: base64, mime: mimeSubtype });
@@ -67,9 +66,9 @@ export const generateVCard = async (
 
   // TITLE (prefer current language if present, fallback to the other)
   const title =
-    (lang === 'de'
+    lang === 'de'
       ? (profile.title?.de ?? '').trim() || (profile.title?.en ?? '').trim()
-      : (profile.title?.en ?? '').trim() || (profile.title?.de ?? '').trim());
+      : (profile.title?.en ?? '').trim() || (profile.title?.de ?? '').trim();
   if (title) vcardParts.push(`TITLE:${escapeVCardText(title)}`);
 
   // ❌ Phone intentionally removed (no TEL field)
@@ -78,39 +77,22 @@ export const generateVCard = async (
   const email = (profile.email ?? '').trim();
   if (email) vcardParts.push(`EMAIL;TYPE=PREF,INTERNET:${escapeVCardText(email)}`);
 
-  // LinkedIn as Social Profile
+  // WEBSITE (optional)
+  const website = (profile.website ?? '').trim();
+  if (website) vcardParts.push(`URL:${escapeVCardText(website)}`);
+
+  // LinkedIn as labeled URL (prevents duplicate LinkedIn fields in iOS)
   const linkedinUrl = (profile.linkedin ?? '').trim();
-
-  const extractLinkedInSlug = (url: string) => {
-    // z.B. https://www.linkedin.com/in/marco-briem-465323201/
-    const cleaned = url.replace(/\/+$/, ''); // trailing slash weg
-    const parts = cleaned.split('/');
-    // bevorzugt Segment nach "/in/"
-    const inIndex = parts.findIndex(p => p === 'in');
-    if (inIndex >= 0 && parts[inIndex + 1]) return parts[inIndex + 1];
-    // fallback: letztes Segment
-    return parts[parts.length - 1] || '';
-  };
-  
   if (linkedinUrl) {
-    const linkedinSlug = extractLinkedInSlug(linkedinUrl);
-  
-    // 1) Social Profile: iOS füllt damit das "Benutzername"-Feld
-    if (linkedinSlug) {
-      vcardParts.push(`X-SOCIALPROFILE;type=linkedin:${escapeVCardText(linkedinSlug)}`);
-    }
+    vcardParts.push(`item1.URL:${escapeVCardText(linkedinUrl)}`);
+    vcardParts.push(`item1.X-ABLabel:LinkedIn`);
   }
-
 
   // ADR
   const address = (profile.address ?? '').trim();
   if (address) {
     vcardParts.push(`ADR;TYPE=WORK:;;${escapeVCardText(address)};;;`);
   }
-
-  // URL (only if set)
-  const website = (profile.website ?? '').trim();
-  if (website) vcardParts.push(`URL:${escapeVCardText(website)}`);
 
   // NOTE (language-aware)
   const legalEntity = (profile.legalEntity ?? '').trim();
@@ -149,4 +131,5 @@ export const generateVCard = async (
 
   window.URL.revokeObjectURL(url);
 };
+
 
