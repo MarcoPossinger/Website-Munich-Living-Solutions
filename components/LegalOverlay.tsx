@@ -243,7 +243,7 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
                 <h4 className="text-white font-semibold mb-1">{AP.focusTitle}</h4>
 
                 {/* Genau wie von dir gewünscht: Lead + eingerückte Unterpunkte */}
-                <p className="text-zinc-300">{AP.focusLead}</p>
+                <p className="text-zinc-400">{AP.focusLead}</p>
                 <ul className="mt-2 ml-5 list-disc list-outside space-y-1">
                   <li>{AP.focusSub1}</li>
                   <li>{AP.focusSub2}</li>
