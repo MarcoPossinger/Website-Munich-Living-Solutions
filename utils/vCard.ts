@@ -20,7 +20,6 @@ const getBase64FromUrl = async (
   // Data-URL already contains base64
   if (url.startsWith('data:')) {
     const [header, data] = url.split('base64,');
-    // header example: data:image/jpeg;
     const mimeSubtype = header.split(':')[1].split(';')[0].split('/')[1]; // jpeg/png/...
     const mime = (mimeSubtype || 'jpeg').toUpperCase();
     return { data, mime };
@@ -50,38 +49,52 @@ export const generateVCard = async (
   profile: ProfileData,
   profileImageUrl?: string | null
 ) => {
-  // Basic required fields
-  const firstName = profile.firstName ?? '';
-  const lastName = profile.lastName ?? '';
+  const firstName = (profile.firstName ?? '').trim();
+  const lastName = (profile.lastName ?? '').trim();
+
+  const fullName = `${firstName} ${lastName}`.trim();
 
   const vcardParts: string[] = [
     'BEGIN:VCARD',
     'VERSION:3.0',
-    `FN:${escapeVCardText(`${firstName} ${lastName}`.trim())}`,
+    `FN:${escapeVCardText(fullName)}`,
     `N:${escapeVCardText(lastName)};${escapeVCardText(firstName)};;;`,
-    `ORG:${escapeVCardText(profile.brand ?? '')}`,
-    `TITLE:${escapeVCardText(profile.title?.de ?? '')}`,
-    `TEL;TYPE=CELL,VOICE:${escapeVCardText(profile.phone ?? '')}`,
-    `EMAIL;TYPE=PREF,INTERNET:${escapeVCardText(profile.email ?? '')}`,
-    // ADR in one-line form (kept as you had it)
-    `ADR;TYPE=WORK:;;${escapeVCardText(profile.address ?? '')};;;`,
   ];
 
-  // ✅ Website only if set (prevents "http://undefined")
-  const website = (profile.website ?? '').trim();
-  if (website) {
-    vcardParts.push(`URL:${escapeVCardText(website)}`);
+  // Optional fields (only add if not empty) – prevents empty lines / "undefined"
+  const org = (profile.brand ?? '').trim();
+  if (org) vcardParts.push(`ORG:${escapeVCardText(org)}`);
+
+  // Prefer German title if present, otherwise English, otherwise omit
+  const title =
+    (profile.title?.de ?? '').trim() ||
+    (profile.title?.en ?? '').trim();
+  if (title) vcardParts.push(`TITLE:${escapeVCardText(title)}`);
+
+  // ❌ Phone removed completely on purpose (no TEL field at all)
+
+  const email = (profile.email ?? '').trim();
+  if (email) vcardParts.push(`EMAIL;TYPE=PREF,INTERNET:${escapeVCardText(email)}`);
+
+  const address = (profile.address ?? '').trim();
+  if (address) {
+    // ADR in one-line form (kept as you had it)
+    vcardParts.push(`ADR;TYPE=WORK:;;${escapeVCardText(address)};;;`);
   }
 
-  // NOTE: must use escaped newlines (\\n) in vCard 3.0
-  const brand = profile.brand ?? '';
-  const linkedin = profile.linkedin ?? '';
-  const legal = profile.legalEntity ?? '';
-const noteLines = [
-  brand ? `Marke: ${brand}` : '',
-  legal ? `Rechtsträger: ${legal}` : '',
-  linkedin ? `LinkedIn: ${linkedin}` : '',
-].filter(Boolean);
+  const website = (profile.website ?? '').trim();
+  if (website) vcardParts.push(`URL:${escapeVCardText(website)}`);
+
+  // Notes (only include non-empty)
+  const brand = (profile.brand ?? '').trim();
+  const linkedin = (profile.linkedin ?? '').trim();
+  const legal = (profile.legalEntity ?? '').trim();
+
+  const noteLines = [
+    brand ? `Brand: ${brand}` : '',
+    legal ? `Legal entity: ${legal}` : '',
+    linkedin ? `LinkedIn: ${linkedin}` : '',
+  ].filter(Boolean);
 
   if (noteLines.length) {
     vcardParts.push(`NOTE:${escapeVCardText(noteLines.join('\n'))}`);
@@ -110,4 +123,3 @@ const noteLines = [
 
   window.URL.revokeObjectURL(url);
 };
-
