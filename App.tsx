@@ -251,6 +251,7 @@ const App: React.FC = () => {
       </main>
 
       <LegalOverlay
+        key={lang}
         type={activeLegal}
         onClose={() => setActiveLegal(null)}
         profile={USER_PROFILE}
