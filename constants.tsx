@@ -37,6 +37,7 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
     call: "Telefon",
     email: "E-Mail",
     linkedin: "LinkedIn",
+    ankaufsprofil: "Ankaufsprofil",
     back: "Zurück",
     downloadVCard: "vCard laden",
     imprint: "Impressum",
@@ -49,6 +50,7 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
     call: "Phone",
     email: "Email",
     linkedin: "LinkedIn",
+    ankaufsprofil: "Acquisition Profile",
     back: "Back",
     downloadVCard: "Download vCard",
     imprint: "Imprint",
@@ -63,3 +65,4 @@ export const IMAGES = {
   logo: "/logo.svg",
   profile: "/portrait.jpg"
 };
+
