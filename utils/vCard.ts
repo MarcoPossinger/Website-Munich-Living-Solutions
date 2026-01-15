@@ -99,10 +99,6 @@ export const generateVCard = async (
     if (linkedinSlug) {
       vcardParts.push(`X-SOCIALPROFILE;type=linkedin:${escapeVCardText(linkedinSlug)}`);
     }
-  
-    // 2) Zusätzlich: klickbarer Link als beschriftete URL (sehr robust)
-    vcardParts.push(`item1.URL:${escapeVCardText(linkedinUrl)}`);
-    vcardParts.push(`item1.X-ABLabel:LinkedIn`);
   }
 
 
