@@ -10,8 +10,8 @@ export const USER_PROFILE: ProfileData = {
   },
 
   subtitle: {
-    de: "Immobilieninvestor & Projektentwickler",
-    en: "Real Estate Investor & Project Developer"
+  de: "Immobilieninvestment & Projektentwicklung",
+  en: "Real Estate Investment & Project Development"
   },
 
   brand: "Munich Living Solutions",
