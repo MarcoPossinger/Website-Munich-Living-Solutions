@@ -51,7 +51,6 @@ export const generateVCard = async (
 ) => {
   const firstName = (profile.firstName ?? '').trim();
   const lastName = (profile.lastName ?? '').trim();
-
   const fullName = `${firstName} ${lastName}`.trim();
 
   const vcardParts: string[] = [
@@ -61,45 +60,45 @@ export const generateVCard = async (
     `N:${escapeVCardText(lastName)};${escapeVCardText(firstName)};;;`,
   ];
 
-  // Optional fields (only add if not empty) – prevents empty lines / "undefined"
+  // ORG
   const org = (profile.brand ?? '').trim();
   if (org) vcardParts.push(`ORG:${escapeVCardText(org)}`);
 
-  // Prefer German title if present, otherwise English, otherwise omit
+  // TITLE (prefer DE, fallback EN)
   const title =
     (profile.title?.de ?? '').trim() ||
     (profile.title?.en ?? '').trim();
   if (title) vcardParts.push(`TITLE:${escapeVCardText(title)}`);
 
-  // ❌ Phone removed completely on purpose (no TEL field at all)
+  // ❌ Phone intentionally removed (no TEL field)
 
+  // EMAIL
   const email = (profile.email ?? '').trim();
   if (email) vcardParts.push(`EMAIL;TYPE=PREF,INTERNET:${escapeVCardText(email)}`);
 
-  const linkedin = (profile.linkedin ?? '').trim();
-  if (linkedin) {
-    vcardParts.push(
-      `X-SOCIALPROFILE;type=linkedin:${escapeVCardText(linkedin)}`
-    );
+  // LinkedIn as Social Profile (not in NOTE)
+  const linkedinUrl = (profile.linkedin ?? '').trim();
+  if (linkedinUrl) {
+    vcardParts.push(`X-SOCIALPROFILE;type=linkedin:${escapeVCardText(linkedinUrl)}`);
   }
 
+  // ADR
   const address = (profile.address ?? '').trim();
   if (address) {
-    // ADR in one-line form (kept as you had it)
     vcardParts.push(`ADR;TYPE=WORK:;;${escapeVCardText(address)};;;`);
   }
 
+  // URL (only if set)
   const website = (profile.website ?? '').trim();
-  if (website) vcardParts.push(`URL:${escapeVCardText(website)}`);
+  if (website) {
+    vcardParts.push(`URL:${escapeVCardText(website)}`);
+  }
 
-  // Notes (only include non-empty)
-  const brand = (profile.brand ?? '').trim();
-  const linkedin = (profile.linkedin ?? '').trim();
-  const legal = (profile.legalEntity ?? '').trim();
-
+  // NOTE (only useful non-empty business context; no LinkedIn here)
+  const legalEntity = (profile.legalEntity ?? '').trim();
   const noteLines = [
-    brand ? `Brand: ${brand}` : '',
-    legal ? `Legal entity: ${legal}` : '',
+    org ? `Brand: ${org}` : '',
+    legalEntity ? `Legal entity: ${legalEntity}` : '',
   ].filter(Boolean);
 
   if (noteLines.length) {
@@ -129,3 +128,4 @@ export const generateVCard = async (
 
   window.URL.revokeObjectURL(url);
 };
+
