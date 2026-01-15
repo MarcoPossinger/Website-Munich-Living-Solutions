@@ -148,10 +148,16 @@ const App: React.FC = () => {
           {USER_PROFILE.firstName} {USER_PROFILE.lastName}
         </h1>
 
-            <p className="text-zinc-400 text-[10px] tracking-[0.25em] uppercase font-semibold mb-6">
+            <p className="text-zinc-400 text-[10px] tracking-[0.25em] uppercase font-semibold mb-2">
               {USER_PROFILE.title[lang]}
             </p>
-            <div className="w-12 h-[1px] bg-white/20 mx-auto"></div>
+            
+            <p className="text-zinc-500 text-[9px] tracking-[0.22em] uppercase font-medium mb-6">
+              {USER_PROFILE.subtitle[lang]}
+            </p>
+
+          <div className="w-12 h-[1px] bg-white/20 mx-auto"></div>
+
           </div>
 
           {/* 4. Action Buttons */}
