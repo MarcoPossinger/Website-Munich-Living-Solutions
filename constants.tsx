@@ -5,8 +5,8 @@ export const USER_PROFILE: ProfileData = {
   lastName: "Possinger",
 
   title: {
-    de: "Gründer & Geschäftsführer",
-    en: "Founder & Managing Director"
+    de: "Geschäftsführer",
+    en: "Managing Director"
   },
 
   subtitle: {
