@@ -80,9 +80,31 @@ export const generateVCard = async (
 
   // LinkedIn as Social Profile
   const linkedinUrl = (profile.linkedin ?? '').trim();
+
+  const extractLinkedInSlug = (url: string) => {
+    // z.B. https://www.linkedin.com/in/marco-briem-465323201/
+    const cleaned = url.replace(/\/+$/, ''); // trailing slash weg
+    const parts = cleaned.split('/');
+    // bevorzugt Segment nach "/in/"
+    const inIndex = parts.findIndex(p => p === 'in');
+    if (inIndex >= 0 && parts[inIndex + 1]) return parts[inIndex + 1];
+    // fallback: letztes Segment
+    return parts[parts.length - 1] || '';
+  };
+  
   if (linkedinUrl) {
-    vcardParts.push(`X-SOCIALPROFILE;type=linkedin:${escapeVCardText(linkedinUrl)}`);
+    const linkedinSlug = extractLinkedInSlug(linkedinUrl);
+  
+    // 1) Social Profile: iOS füllt damit das "Benutzername"-Feld
+    if (linkedinSlug) {
+      vcardParts.push(`X-SOCIALPROFILE;type=linkedin:${escapeVCardText(linkedinSlug)}`);
+    }
+  
+    // 2) Zusätzlich: klickbarer Link als beschriftete URL (sehr robust)
+    vcardParts.push(`item1.URL:${escapeVCardText(linkedinUrl)}`);
+    vcardParts.push(`item1.X-ABLabel:LinkedIn`);
   }
+
 
   // ADR
   const address = (profile.address ?? '').trim();
