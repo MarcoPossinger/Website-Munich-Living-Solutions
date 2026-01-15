@@ -1,24 +1,29 @@
 import { ProfileData, TranslationStrings } from './types';
 
+/* =========================
+   USER PROFILE
+========================= */
+
 export const USER_PROFILE: ProfileData = {
   firstName: "Marco",
   lastName: "Possinger",
 
   title: {
     de: "Geschäftsführer",
-    en: "Managing Director"
+    en: "Managing Director",
   },
 
   subtitle: {
-  de: "Immobilieninvestment & Projektentwicklung",
-  en: "Real Estate Investment & Project Development"
+    de: "Immobilieninvestment & Projektentwicklung",
+    en: "Real Estate Investment & Project Development",
   },
 
   brand: "Munich Living Solutions",
   legalEntity: "BPD Briem Property Development GmbH",
   managingDirector: "Marco Possinger",
 
-  phone: "+49 157 83698237", // lassen wir für jetzt bewusst noch drin
+  // bewusst noch vorhanden (wird nicht angezeigt)
+  phone: "+49 157 83698237",
   email: "marco.possinger@munichlivingsolutions.de",
   imprintEmail: "info@munichlivingsolutions.de",
 
@@ -30,6 +35,10 @@ export const USER_PROFILE: ProfileData = {
 
   profileImage: "/images/profile-contact.jpg",
 };
+
+/* =========================
+   TRANSLATIONS
+========================= */
 
 export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
   de: {
@@ -43,8 +52,38 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
     imprint: "Impressum",
     privacy: "Datenschutz",
     close: "Schließen",
-    whatsapp: "WhatsApp"
+    whatsapp: "WhatsApp",
+
+    legal: {
+      imprint: {
+        title: "Impressum",
+        content: `
+Angaben gemäß § 5 TMG
+
+BPD Briem Property Development GmbH
+Bürgermeister-Schneider-Weg 163
+85579 Neubiberg
+
+Vertreten durch:
+Marco Possinger
+
+Registergericht: Amtsgericht München
+Registernummer: HRB 283403
+Umsatzsteuer-ID: DE360600844
+
+E-Mail: info@munichlivingsolutions.de
+        `,
+      },
+      privacy: {
+        title: "Datenschutzerklärung",
+        content: `
+Dies ist eine Beispiel-Datenschutzerklärung.
+Hier kommt dein vollständiger deutscher Datenschutztext rein.
+        `,
+      },
+    },
   },
+
   en: {
     saveContact: "Save Contact",
     call: "Phone",
@@ -53,16 +92,48 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
     ankaufsprofil: "Acquisition Profile",
     back: "Back",
     downloadVCard: "Download vCard",
-    imprint: "Imprint",
+    imprint: "Legal Notice",
     privacy: "Privacy Policy",
     close: "Close",
-    whatsapp: "WhatsApp"
-  }
+    whatsapp: "WhatsApp",
+
+    legal: {
+      imprint: {
+        title: "Legal Notice",
+        content: `
+Information pursuant to Section 5 German Telemedia Act (TMG)
+
+BPD Briem Property Development GmbH
+Bürgermeister-Schneider-Weg 163
+85579 Neubiberg, Germany
+
+Represented by:
+Marco Possinger
+
+Commercial Register: Munich District Court
+Registration Number: HRB 283403
+VAT ID: DE360600844
+
+Email: info@munichlivingsolutions.de
+        `,
+      },
+      privacy: {
+        title: "Privacy Policy",
+        content: `
+This is a sample privacy policy.
+Your full English privacy policy text goes here.
+        `,
+      },
+    },
+  },
 };
+
+/* =========================
+   IMAGES
+========================= */
 
 export const IMAGES = {
   background: "",
   logo: "/logo.svg",
-  profile: "/portrait.jpg"
+  profile: "/portrait.jpg",
 };
-
