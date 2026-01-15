@@ -47,7 +47,8 @@ const getBase64FromUrl = async (
 
 export const generateVCard = async (
   profile: ProfileData,
-  profileImageUrl?: string | null
+  profileImageUrl?: string | null,
+  lang: 'de' | 'en' = 'de'
 ) => {
   const firstName = (profile.firstName ?? '').trim();
   const lastName = (profile.lastName ?? '').trim();
@@ -64,10 +65,11 @@ export const generateVCard = async (
   const org = (profile.brand ?? '').trim();
   if (org) vcardParts.push(`ORG:${escapeVCardText(org)}`);
 
-  // TITLE (prefer DE, fallback EN)
+  // TITLE (prefer current language if present, fallback to the other)
   const title =
-    (profile.title?.de ?? '').trim() ||
-    (profile.title?.en ?? '').trim();
+    (lang === 'de'
+      ? (profile.title?.de ?? '').trim() || (profile.title?.en ?? '').trim()
+      : (profile.title?.en ?? '').trim() || (profile.title?.de ?? '').trim());
   if (title) vcardParts.push(`TITLE:${escapeVCardText(title)}`);
 
   // ❌ Phone intentionally removed (no TEL field)
@@ -76,7 +78,7 @@ export const generateVCard = async (
   const email = (profile.email ?? '').trim();
   if (email) vcardParts.push(`EMAIL;TYPE=PREF,INTERNET:${escapeVCardText(email)}`);
 
-  // LinkedIn as Social Profile (not in NOTE)
+  // LinkedIn as Social Profile
   const linkedinUrl = (profile.linkedin ?? '').trim();
   if (linkedinUrl) {
     vcardParts.push(`X-SOCIALPROFILE;type=linkedin:${escapeVCardText(linkedinUrl)}`);
@@ -90,15 +92,16 @@ export const generateVCard = async (
 
   // URL (only if set)
   const website = (profile.website ?? '').trim();
-  if (website) {
-    vcardParts.push(`URL:${escapeVCardText(website)}`);
-  }
+  if (website) vcardParts.push(`URL:${escapeVCardText(website)}`);
 
-  // NOTE (only useful non-empty business context; no LinkedIn here)
+  // NOTE (language-aware)
   const legalEntity = (profile.legalEntity ?? '').trim();
+  const noteLabelBrand = lang === 'de' ? 'Marke' : 'Brand';
+  const noteLabelLegal = lang === 'de' ? 'Rechtsträger' : 'Legal entity';
+
   const noteLines = [
-    org ? `Brand: ${org}` : '',
-    legalEntity ? `Legal entity: ${legalEntity}` : '',
+    org ? `${noteLabelBrand}: ${org}` : '',
+    legalEntity ? `${noteLabelLegal}: ${legalEntity}` : '',
   ].filter(Boolean);
 
   if (noteLines.length) {
