@@ -234,7 +234,9 @@ const App: React.FC = () => {
         </div>
 
         {/* Legal Links */}
-        <div className={`mt-10 flex justify-center space-x-8 transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+        <div 
+          key={lang}
+          className={`mt-10 flex justify-center space-x-8 transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
           <button
             onClick={() => setActiveLegal('imprint')}
             className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
