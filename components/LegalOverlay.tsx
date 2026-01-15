@@ -23,6 +23,8 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
     typesTitle: isDE ? 'Objekttypen & Investitionsvolumen' : 'Asset Types & Investment Volume',
     type1: isDE ? 'Eigentumswohnungen bis ca.' : 'Apartments up to approx.',
     type2: isDE ? 'Mehrfamilienhäuser bis ca.' : 'Multi-family buildings up to approx.',
+    type1Value: isDE ? '1,0 Mio €' : '€1.0m',
+    type2Value: isDE ? '5,5 Mio €' : '€5.5m',
     focusTitle: isDE ? 'Investitionsfokus' : 'Investment Focus',
     focusLead: isDE
       ? 'Wohnimmobilien mit Entwicklungs- und Wertsteigerungspotenzial, insbesondere:'
@@ -220,8 +222,8 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
               <div>
                 <h4 className="text-white font-semibold mb-1">{AP.typesTitle}</h4>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>{AP.type1} <strong>1.0m €</strong></li>
-                  <li>{AP.type2} <strong>5.5m €</strong></li>
+                  <li>{AP.type1} <strong>{AP.type1Value}</strong></li>
+                  <li>{AP.type2} <strong>{AP.type2Value}</strong></li>
                 </ul>
               </div>
 
