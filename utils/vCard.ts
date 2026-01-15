@@ -76,6 +76,13 @@ export const generateVCard = async (
   const email = (profile.email ?? '').trim();
   if (email) vcardParts.push(`EMAIL;TYPE=PREF,INTERNET:${escapeVCardText(email)}`);
 
+  const linkedin = (profile.linkedin ?? '').trim();
+  if (linkedin) {
+    vcardParts.push(
+      `X-SOCIALPROFILE;type=linkedin:${escapeVCardText(linkedin)}`
+    );
+  }
+
   const address = (profile.address ?? '').trim();
   if (address) {
     // ADR in one-line form (kept as you had it)
@@ -93,7 +100,6 @@ export const generateVCard = async (
   const noteLines = [
     brand ? `Brand: ${brand}` : '',
     legal ? `Legal entity: ${legal}` : '',
-    linkedin ? `LinkedIn: ${linkedin}` : '',
   ].filter(Boolean);
 
   if (noteLines.length) {
