@@ -99,7 +99,7 @@ Hier kommt dein vollständiger deutscher Datenschutztext rein.
 
     legal: {
       imprint: {
-        title: "Legal Notice",
+        title: "Legal Notice (Imprint according to German law)",
         content: `
 Information pursuant to Section 5 German Telemedia Act (TMG)
 
