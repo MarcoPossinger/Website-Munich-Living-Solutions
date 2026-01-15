@@ -34,4 +34,17 @@ export interface TranslationStrings {
   privacy: string;
   close: string;
   whatsapp: string;
+
+  // NEU: Inhalte fürs LegalOverlay (DE/EN kommt automatisch über t)
+  legal: {
+    imprint: {
+      title: string;
+      content: string;
+    };
+    privacy: {
+      title: string;
+      content: string;
+    };
+  };
 }
+
