@@ -3,22 +3,31 @@ import { ProfileData, TranslationStrings } from './types';
 export const USER_PROFILE: ProfileData = {
   firstName: "Marco",
   lastName: "Possinger",
+
   title: {
-    de: "Gründer und Geschäftsführer",
+    de: "Gründer & Geschäftsführer",
     en: "Founder & Managing Director"
   },
+
+  subtitle: {
+    de: "Immobilieninvestor & Projektentwickler",
+    en: "Real Estate Investor & Project Developer"
+  },
+
   brand: "Munich Living Solutions",
   legalEntity: "BPD Briem Property Development GmbH",
   managingDirector: "Marco Possinger",
-  phone: "+49 157 83698237",
-  email: "marco.possinger@munichlivingsolutions.de",   // für vCard & Buttons
-  imprintEmail: "info@munichlivingsolutions.de",       // für Impressum & Datenschutz
+
+  phone: "+49 157 83698237", // lassen wir für jetzt bewusst noch drin
+  email: "marco.possinger@munichlivingsolutions.de",
+  imprintEmail: "info@munichlivingsolutions.de",
+
   linkedin: "https://www.linkedin.com/in/marco-briem-465323201/",
-  // website bewusst weggelassen – richtig so
   address: "Bürgermeister-Schneider-Weg 163, 85579 Neubiberg",
   registerCourt: "Amtsgericht München",
   registerNumber: "HRB 283403",
   vatId: "DE360600844",
+
   profileImage: "/images/profile-contact.jpg",
 };
 
@@ -52,6 +61,5 @@ export const TRANSLATIONS: Record<'de' | 'en', TranslationStrings> = {
 export const IMAGES = {
   background: "",
   logo: "/logo.svg",
-  profile: "/portrait.jpg" // optional, getrennt vom vCard-Bild – okay
+  profile: "/portrait.jpg"
 };
-
