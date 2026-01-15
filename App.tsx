@@ -18,6 +18,10 @@ const App: React.FC = () => {
     setIsLoaded(true);
   }, []);
 
+  useEffect(() => {
+  setActiveLegal(null);
+}, [lang]);
+
   const resolveImagePath = (path: string) => {
     if (path.startsWith('http') || path.startsWith('data:') || path.startsWith('/')) return path;
     return `/${path.replace(/^\.?\//, '')}`;
