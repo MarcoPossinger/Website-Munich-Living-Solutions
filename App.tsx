@@ -55,7 +55,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={`relative min-h-screen bg-[#050505] flex flex-col items-center justify-start p-4 text-white font-serif-custom overflow-y-auto overflow-x-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`relative min-h-screen bg-gradient-to-b from-[#262538] to-[#050505] flex flex-col items-center justify-start p-4 text-white font-serif-custom overflow-y-auto overflow-x-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
 
       {/* Language Switcher */}
       <div className="fixed top-4 left-4 z-[100] sm:top-6 sm:left-6">
@@ -64,7 +64,7 @@ const App: React.FC = () => {
 
       <main className="w-full max-w-[440px] relative pt-16 pb-20">
         {/* Hauptkarte */}
-        <div className={`relative bg-[#0d0d0d] rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] border border-white/[0.06] overflow-hidden flex flex-col items-center p-8 md:p-10 text-center transition-all duration-1000 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+        <div className={`relative bg-[#0f1020] rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] border border-white/[0.06] overflow-hidden flex flex-col items-center p-8 md:p-10 text-center transition-all duration-1000 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
 
           {/* Share Button */}
           <button
