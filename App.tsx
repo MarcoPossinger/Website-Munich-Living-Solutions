@@ -64,7 +64,7 @@ const App: React.FC = () => {
 
       <main className="w-full max-w-[440px] relative pt-16 pb-20">
         {/* Hauptkarte */}
-        <div className={`relative bg-[#0f1020] rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] border border-white/[0.06] overflow-hidden flex flex-col items-center p-8 md:p-10 text-center transition-all duration-1000 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+        <div className={`relative bg-gradient-to-b from-[#14152a] to-[#0c0d1a] rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] border border-white/[0.06] overflow-hidden flex flex-col items-center p-8 md:p-10 text-center transition-all duration-1000 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
 
           {/* Share Button */}
           <button
