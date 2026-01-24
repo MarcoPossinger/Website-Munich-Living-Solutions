@@ -19,8 +19,8 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-  setActiveLegal(null);
-}, [lang]);
+    setActiveLegal(null);
+  }, [lang]);
 
   const resolveImagePath = (path: string) => {
     if (path.startsWith('http') || path.startsWith('data:') || path.startsWith('/')) return path;
@@ -161,7 +161,7 @@ const App: React.FC = () => {
             <button
               onClick={handleDownloadVCard}
               disabled={isDownloading}
-              className="w-full bg-white text-black font-bold py-5 rounded-2xl flex items-center justify-center space-x-3 hover:bg-zinc-200 transition-all active:scale-[0.98] shadow-xl relative overflow-hidden group"
+              className="w-full bg-white text-[#1f2747] font-bold py-5 rounded-2xl flex items-center justify-center space-x-3 hover:bg-zinc-200 transition-all active:scale-[0.98] shadow-xl relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <span className="text-[11px] tracking-[0.25em] uppercase pl-4 relative z-10">
@@ -177,14 +177,14 @@ const App: React.FC = () => {
               {/* Email */}
               <a
                 href={`mailto:${USER_PROFILE.email}`}
-                className="bg-[#141414] border border-white/[0.08] py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-[#1a1a1a] transition-all group"
+                className="bg-[#151a2e] border border-[#2a3470]/40 py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-[#1f2747] hover:border-[#3b47a0]/60 transition-all group"
               >
-                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#aeb8ff]/80 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z" />
                 </svg>
 
                 {/* ⬆️ größer: 7 -> 8 */}
-                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-white/65 group-hover:text-white/90">
+                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-[#9aa6ff]/80 group-hover:text-white transition-colors">
                   {t.email}
                 </span>
               </a>
@@ -194,14 +194,14 @@ const App: React.FC = () => {
                 href={USER_PROFILE.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#141414] border border-white/[0.08] py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-[#1a1a1a] transition-all group"
+                className="bg-[#151a2e] border border-[#2a3470]/40 py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-[#1f2747] hover:border-[#3b47a0]/60 transition-all group"
               >
-                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#aeb8ff]/80 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
 
                 {/* ⬆️ größer: 7 -> 8 */}
-                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-white/65 group-hover:text-white/90">
+                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-[#9aa6ff]/80 group-hover:text-white transition-colors">
                   {t.linkedin}
                 </span>
               </a>
@@ -209,14 +209,14 @@ const App: React.FC = () => {
               {/* Ankaufsprofil */}
               <button
                 onClick={() => setActiveLegal('ankaufsprofil')}
-                className="bg-[#141414] border border-white/[0.08] py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-[#1a1a1a] transition-all group"
+                className="bg-[#151a2e] border border-[#2a3470]/40 py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-[#1f2747] hover:border-[#3b47a0]/60 transition-all group"
               >
-                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#aeb8ff]/80 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6M7 20h10a2 2 0 002-2V6a2 2 0 00-2-2H9l-2 2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
 
                 {/* ⬆️ größer: 7 -> 8 */}
-                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-white/65 group-hover:text-white/90">
+                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-[#9aa6ff]/80 group-hover:text-white transition-colors">
                   {t.ankaufsprofil}
                 </span>
               </button>
@@ -238,18 +238,18 @@ const App: React.FC = () => {
         </div>
 
         {/* Legal Links */}
-        <div 
+        <div
           key={lang}
           className={`mt-10 flex justify-center space-x-8 transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
           <button
             onClick={() => setActiveLegal('imprint')}
-            className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
+            className="text-[10px] uppercase tracking-[0.2em] text-[#8f9cff] hover:text-white transition-colors"
           >
             {t.imprint}
           </button>
           <button
             onClick={() => setActiveLegal('privacy')}
-            className="text-[10px] uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors"
+            className="text-[10px] uppercase tracking-[0.2em] text-[#8f9cff] hover:text-white transition-colors"
           >
             {t.privacy}
           </button>
@@ -269,4 +269,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
 
