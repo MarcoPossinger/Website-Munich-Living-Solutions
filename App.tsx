@@ -56,10 +56,11 @@ const App: React.FC = () => {
 
   return (
     <div
-      className={`relative min-h-screen bg-[#000022] flex flex-col items-center justify-start p-4 text-white font-serif-custom overflow-y-auto overflow-x-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      className={`relative min-h-screen bg-[#06021e] flex flex-col items-center justify-start p-4 text-white font-serif-custom overflow-y-auto overflow-x-hidden transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
     >
       {/* Premium Navy Background (subtle gradients) */}
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(180deg,#000022_0%,#02032E_45%,#000022_100%),radial-gradient(900px_circle_at_15%_10%,rgba(99,102,241,0.10),transparent_55%),radial-gradient(700px_circle_at_85%_30%,rgba(56,189,248,0.08),transparent_60%)]" />
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(180deg,#06021e_0%,#050119_45%,#06021e_100%),radial-gradient(900px_circle_at_20%_10%,rgba(99,102,241,0.06),transparent_60%),radial-gradient(700px_circle_at_80%_30%,rgba(56,189,248,0.05),transparent_65%)]" />
+
 
       {/* Language Switcher */}
       <div className="fixed top-4 left-4 z-[100] sm:top-6 sm:left-6">
