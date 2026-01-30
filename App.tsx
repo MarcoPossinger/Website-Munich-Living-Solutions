@@ -50,7 +50,8 @@ const App: React.FC = () => {
     } else {
       await navigator.clipboard.writeText(window.location.href);
       setCopySuccess(true);
-      setTimeout(() => setCopyssetCopySuccess(false), 2000);
+      // ✅ Bugfix: richtiger Setter
+      setTimeout(() => setCopySuccess(false), 2000);
     }
   };
 
@@ -61,24 +62,28 @@ const App: React.FC = () => {
       {/* Premium Navy Background (subtle gradients) */}
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(180deg,#020014_0%,#01000C_50%,#020014_100%),radial-gradient(1000px_circle_at_50%_120%,rgba(10,6,56,0.35),transparent_60%),radial-gradient(800px_circle_at_20%_10%,rgba(10,6,56,0.12),transparent_65%)]" />
 
-      {/* Language Switcher */}
+      {/* Language Switcher (more integrated / glassy) */}
       <div className="fixed top-4 left-4 z-[100] sm:top-6 sm:left-6">
-        <LanguageSwitcher currentLang={lang} onLanguageChange={setLang} />
+        <div className="rounded-2xl bg-white/[0.035] border border-white/[0.08] backdrop-blur-md shadow-[0_18px_60px_-30px_rgba(0,0,0,0.9)]">
+          <LanguageSwitcher currentLang={lang} onLanguageChange={setLang} />
+        </div>
       </div>
 
       <main className="w-full max-w-[440px] relative pt-16 pb-20">
+        {/* Halo behind the main card (premium separation) */}
+        <div className="pointer-events-none absolute left-1/2 top-24 -translate-x-1/2 w-[520px] h-[780px] rounded-[4rem] blur-3xl opacity-60 bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.08),transparent_55%),radial-gradient(circle_at_50%_85%,rgba(10,6,56,0.38),transparent_62%)]" />
+
         {/* Hauptkarte */}
         <div
-          className={`relative bg-[#0A0F2A]/92 rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] border border-white/[0.06] overflow-hidden flex flex-col items-center p-8 md:p-10 text-center transition-all duration-1000 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+          className={`relative bg-[#05031A]/96 rounded-[3.5rem] shadow-[0_55px_120px_-35px_rgba(0,0,0,0.95)] border border-white/[0.055] overflow-hidden flex flex-col items-center p-8 md:p-10 text-center transition-all duration-800 delay-100 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
         >
-
-          {/* Share Button */}
+          {/* Share Button (cleaner, less contrast) */}
           <button
             onClick={handleShare}
-            className="absolute top-[8rem] right-8 p-2.5 rounded-full bg-white/[0.04] backdrop-blur-md border border-white/15 hover:bg-white/15 transition-all active:scale-90 z-10"
+            className="absolute top-[8rem] right-7 p-2.5 rounded-full bg-white/[0.03] backdrop-blur-md border border-white/[0.10] hover:bg-white/[0.06] hover:border-white/[0.14] transition-all active:scale-90 z-10"
           >
             <svg
-              className={`w-3.5 h-3.5 transition-colors ${copySuccess ? 'text-green-400' : 'text-white/40 hover:text-white/70'}`}
+              className={`w-3.5 h-3.5 transition-colors ${copySuccess ? 'text-green-400' : 'text-white/45 group-hover:text-white/70 hover:text-white/70'}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -124,7 +129,7 @@ const App: React.FC = () => {
           {/* 2. Profilbild */}
           <div className="relative mb-8 group">
             <div className="w-40 h-40 rounded-full border border-white/10 p-1.5 bg-gradient-to-b from-white/10 to-transparent shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
-              <div className="w-full h-full rounded-full overflow-hidden bg-[#070B1A] border border-black/50">
+              <div className="w-full h-full rounded-full overflow-hidden bg-[#030016] border border-black/50">
                 <img
                   src={resolveImagePath(IMAGES.profile)}
                   alt={USER_PROFILE.firstName}
@@ -151,16 +156,16 @@ const App: React.FC = () => {
               {USER_PROFILE.subtitle[lang]}
             </p>
 
-            <div className="w-12 h-[1px] bg-white/20 mx-auto"></div>
+            <div className="w-12 h-[1px] bg-white/25 mx-auto"></div>
           </div>
 
           {/* 4. Action Buttons */}
           <div className="w-full space-y-4 mb-10">
-            {/* Save Contact Button */}
+            {/* Save Contact Button (subtle premium gradient + refined shadow) */}
             <button
               onClick={handleDownloadVCard}
               disabled={isDownloading}
-              className="w-full bg-white text-[#0B1026] font-bold py-5 rounded-2xl flex items-center justify-center space-x-3 hover:bg-slate-100 transition-all active:scale-[0.98] shadow-xl relative overflow-hidden group"
+              className="w-full bg-gradient-to-b from-white to-white/90 text-[#0B1026] font-bold py-5 rounded-2xl flex items-center justify-center space-x-3 hover:to-white/80 transition-all active:scale-[0.98] shadow-[0_18px_40px_-18px_rgba(255,255,255,0.35)] relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <span className="text-[11px] tracking-[0.25em] uppercase pl-4 relative z-10">
@@ -171,18 +176,18 @@ const App: React.FC = () => {
               </svg>
             </button>
 
-            {/* Quick Actions Grid */}
+            {/* Quick Actions Grid (navy glass / less "blue button") */}
             <div className="grid grid-cols-3 gap-3">
               {/* Email */}
               <a
                 href={`mailto:${USER_PROFILE.email}`}
-                className="bg-[#12183D] border border-white/[0.08] py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-[#1A2160] transition-all group"
+                className="bg-white/[0.035] border border-white/[0.06] py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-white/[0.06] hover:border-white/[0.10] transition-all group"
               >
-                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-white/65 group-hover:text-white/85 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z" />
                 </svg>
 
-                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-white/65 group-hover:text-white/90">
+                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-white/55 group-hover:text-white/75">
                   {t.email}
                 </span>
               </a>
@@ -192,13 +197,13 @@ const App: React.FC = () => {
                 href={USER_PROFILE.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#12183D] border border-white/[0.08] py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-[#1A2160] transition-all group"
+                className="bg-white/[0.035] border border-white/[0.06] py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-white/[0.06] hover:border-white/[0.10] transition-all group"
               >
-                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-white/65 group-hover:text-white/85 transition-colors" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
 
-                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-white/65 group-hover:text-white/90">
+                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-white/55 group-hover:text-white/75">
                   {t.linkedin}
                 </span>
               </a>
@@ -206,13 +211,13 @@ const App: React.FC = () => {
               {/* Ankaufsprofil */}
               <button
                 onClick={() => setActiveLegal('ankaufsprofil')}
-                className="bg-[#12183D] border border-white/[0.08] py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-[#1A2160] transition-all group"
+                className="bg-white/[0.035] border border-white/[0.06] py-5 rounded-2xl flex flex-col items-center space-y-2 hover:bg-white/[0.06] hover:border-white/[0.10] transition-all group"
               >
-                <svg className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-white/65 group-hover:text-white/85 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6M7 20h10a2 2 0 002-2V6a2 2 0 00-2-2H9l-2 2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
 
-                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-white/65 group-hover:text-white/90">
+                <span className="text-[8px] font-bold uppercase tracking-[0.1em] text-white/55 group-hover:text-white/75">
                   {t.ankaufsprofil}
                 </span>
               </button>
@@ -228,23 +233,22 @@ const App: React.FC = () => {
               {USER_PROFILE.address}
             </p>
           </div>
-
         </div>
 
-        {/* Legal Links */}
+        {/* Legal Links (bigger tap target on mobile) */}
         <div
           key={lang}
-          className={`mt-10 flex justify-center space-x-8 transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+          className={`mt-10 flex justify-center space-x-8 transition-all duration-800 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
         >
           <button
             onClick={() => setActiveLegal('imprint')}
-            className="text-[10px] uppercase tracking-[0.2em] text-slate-400 hover:text-slate-200 transition-colors"
+            className="py-2 px-1 text-[10px] uppercase tracking-[0.2em] text-slate-400 hover:text-slate-200 transition-colors"
           >
             {t.imprint}
           </button>
           <button
             onClick={() => setActiveLegal('privacy')}
-            className="text-[10px] uppercase tracking-[0.2em] text-slate-400 hover:text-slate-200 transition-colors"
+            className="py-2 px-1 text-[10px] uppercase tracking-[0.2em] text-slate-400 hover:text-slate-200 transition-colors"
           >
             {t.privacy}
           </button>
@@ -264,4 +268,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
 
