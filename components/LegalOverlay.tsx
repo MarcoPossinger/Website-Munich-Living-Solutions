@@ -83,22 +83,25 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-xl">
-      <div className="w-full max-w-2xl bg-[#0f0f0f] border-t sm:border border-white/10 rounded-t-[2rem] sm:rounded-[2rem] max-h-[90vh] overflow-hidden flex flex-col shadow-2xl">
+    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/70 backdrop-blur-md">
+      <div className="w-full max-w-2xl bg-[#05031A]/96 border-t sm:border border-white/[0.06] rounded-t-[2rem] sm:rounded-[2rem] max-h-[90vh] overflow-hidden flex flex-col shadow-[0_60px_140px_-40px_rgba(0,0,0,0.95)]">
 
         {/* Header */}
-        <div className="p-6 border-b border-white/5 flex items-center justify-between">
+        <div className="p-6 border-b border-white/[0.06] flex items-center justify-between bg-white/[0.02]">
           <h2 className="text-2xl font-bold tracking-tight text-white">
             {type === 'imprint' ? t.legal.imprint.title : type === 'privacy' ? t.legal.privacy.title : t.ankaufsprofil}
           </h2>
-          <button onClick={onClose} className="p-2 hover:bg-white/5 rounded-full text-white/50 hover:text-white">
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full bg-white/[0.03] border border-white/[0.08] text-white/70 hover:text-white hover:bg-white/[0.06] hover:border-white/[0.12] transition-colors"
+            aria-label={t.close}
+          >
             ✕
           </button>
         </div>
 
-        {/* Content – NUR Schriftgröße + line-height erhöht */}
-        <div className="p-8 overflow-y-auto text-[15px] leading-7 text-zinc-400 space-y-6">
-
+        {/* Content – nur Design: Farben/Spacing/Typo, Inhalt unverändert */}
+        <div className="p-8 overflow-y-auto text-[15px] leading-7 text-slate-300 space-y-6">
           {type === 'imprint' && (
             <>
               <div>
@@ -106,36 +109,36 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
                   {isDE ? 'Angaben gemäß § 5 TMG' : 'Information pursuant to Section 5 German Telemedia Act (TMG)'}
                 </h3>
                 <p className="text-white">{profile.legalEntity}</p>
-                <p>{profile.address}</p>
+                <p className="text-slate-300">{profile.address}</p>
               </div>
 
               <div>
                 <h3 className="text-white font-bold mb-2 uppercase text-[11px] tracking-widest">
                   {isDE ? 'Vertreten durch' : 'Represented by'}
                 </h3>
-                <p>{profile.managingDirector}</p>
+                <p className="text-slate-300">{profile.managingDirector}</p>
               </div>
 
               <div>
                 <h3 className="text-white font-bold mb-2 uppercase text-[11px] tracking-widest">
                   {isDE ? 'Kontakt' : 'Contact'}
                 </h3>
-                <p>{isDE ? 'E-Mail: ' : 'Email: '}{profile.imprintEmail || profile.email}</p>
+                <p className="text-slate-300">{isDE ? 'E-Mail: ' : 'Email: '}{profile.imprintEmail || profile.email}</p>
               </div>
 
               <div>
                 <h3 className="text-white font-bold mb-2 uppercase text-[11px] tracking-widest">
                   {isDE ? 'Registereintrag' : 'Commercial Register'}
                 </h3>
-                <p>{isDE ? 'Registergericht: ' : 'Register court: '}{profile.registerCourt}</p>
-                <p>{isDE ? 'Registernummer: ' : 'Registration number: '}{profile.registerNumber}</p>
+                <p className="text-slate-300">{isDE ? 'Registergericht: ' : 'Register court: '}{profile.registerCourt}</p>
+                <p className="text-slate-300">{isDE ? 'Registernummer: ' : 'Registration number: '}{profile.registerNumber}</p>
               </div>
 
               <div>
                 <h3 className="text-white font-bold mb-2 uppercase text-[11px] tracking-widest">
                   {isDE ? 'Umsatzsteuer-ID' : 'VAT ID'}
                 </h3>
-                <p>{profile.vatId}</p>
+                <p className="text-slate-300">{profile.vatId}</p>
               </div>
             </>
           )}
@@ -151,7 +154,7 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
                   <br />
                   {profile.address}
                 </p>
-                <p className="mt-2">
+                <p className="mt-2 text-slate-300">
                   {isDE ? 'Vertreten durch: ' : 'Represented by: '}{profile.managingDirector}
                   <br />
                   {isDE ? 'E-Mail: ' : 'Email: '}{profile.imprintEmail || profile.email}
@@ -175,7 +178,7 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
                     : 'This website is hosted by Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA. When you access the website, the hosting provider processes technical access data (so-called server log files), e.g., IP address, date and time of access, browser type, operating system and referrer URL.'}
                 </p>
                 <p className="mt-2">
-                  <span className="text-white/80 font-semibold">{isDE ? 'Rechtsgrundlage:' : 'Legal basis:'}</span>{' '}
+                  <span className="text-white/85 font-semibold">{isDE ? 'Rechtsgrundlage:' : 'Legal basis:'}</span>{' '}
                   {isDE
                     ? 'Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und stabilen Betrieb dieser Website).'
                     : 'Art. 6(1)(f) GDPR (legitimate interest in the secure and stable operation of this website).'}
@@ -204,7 +207,7 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
                     : 'For technical delivery, external content may be loaded (e.g., Tailwind CSS via cdn.tailwindcss.com and JavaScript modules via esm.sh). Your IP address may be transmitted to the respective providers, as the content cannot be delivered technically without this transmission.'}
                 </p>
                 <p className="mt-2">
-                  <span className="text-white/80 font-semibold">{isDE ? 'Rechtsgrundlage:' : 'Legal basis:'}</span>{' '}
+                  <span className="text-white/85 font-semibold">{isDE ? 'Rechtsgrundlage:' : 'Legal basis:'}</span>{' '}
                   {isDE
                     ? 'Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer effizienten und sicheren Bereitstellung dieser Website).'
                     : 'Art. 6(1)(f) GDPR (legitimate interest in efficient and secure delivery of this website).'}
@@ -264,23 +267,28 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
               <div>
                 <h4 className="text-white font-semibold mb-1">{AP.typesTitle}</h4>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>{AP.type1} <strong>{AP.type1Value}</strong></li>
-                  <li>{AP.type2} <strong>{AP.type2Value}</strong></li>
+                  <li>{AP.type1} <strong className="text-white">{AP.type1Value}</strong></li>
+                  <li>{AP.type2} <strong className="text-white">{AP.type2Value}</strong></li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="text-white font-semibold mb-1">{AP.focusTitle}</h4>
                 <p>{AP.focusLead}</p>
+
+                {/* ✅ Struktur-Fix (einzige inhaltliche Änderung): 
+                    "Objekte mit Umgestaltungspotential:" als gleichrangiger Punkt,
+                    ETW/MFH als Unterpunkte */}
                 <ul className="mt-2 ml-5 list-disc space-y-1">
                   <li>{AP.focusSub1}</li>
                   <li>{AP.focusSub2}</li>
-                </ul>
-
-                <p className="mt-3 text-white/90 font-semibold">{AP.redesignTitle}</p>
-                <ul className="mt-2 ml-5 list-disc space-y-1">
-                  <li>{AP.redesignEtw}</li>
-                  <li>{AP.redesignMfh}</li>
+                  <li>
+                    <span className="text-white/90 font-semibold">{AP.redesignTitle}</span>
+                    <ul className="mt-2 ml-5 list-disc space-y-1">
+                      <li>{AP.redesignEtw}</li>
+                      <li>{AP.redesignMfh}</li>
+                    </ul>
+                  </li>
                 </ul>
 
                 <p className="mt-3">{AP.focusLine}</p>
@@ -323,11 +331,11 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
           )}
         </div>
 
-        {/* Footer */}
-        <div className="p-6 border-t border-white/5 bg-white/[0.02]">
+        {/* Footer (match main glass buttons) */}
+        <div className="p-6 border-t border-white/[0.06] bg-white/[0.02]">
           <button
             onClick={onClose}
-            className="w-full py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl uppercase text-[11px] tracking-widest"
+            className="w-full py-4 bg-white/[0.035] hover:bg-white/[0.06] border border-white/[0.06] hover:border-white/[0.10] text-white font-bold rounded-xl uppercase text-[11px] tracking-widest transition-colors"
           >
             {t.close}
           </button>
@@ -338,4 +346,5 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
 };
 
 export default LegalOverlay;
+
 
