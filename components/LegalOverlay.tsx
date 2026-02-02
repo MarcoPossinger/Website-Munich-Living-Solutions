@@ -39,7 +39,7 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
       ? 'Wohnimmobilien mit Entwicklungs- und Wertsteigerungspotenzial, d.h.:'
       : 'Residential real estate with development and value-add potential, i.e.:',
     focusSub1: isDE ? 'Sanierungs- oder modernisierungsbedürftige Objekte' : 'Properties requiring refurbishment or modernization',
-    focusSub2: isDE ? 'unter aktuellem Marktniveau vermietete Objekte' : 'Properties let below current market levels',
+    focusSub2: isDE ? 'Unter aktuellem Marktniveau vermietete Objekte' : 'Properties let below current market levels',
 
     redesignTitle: isDE ? 'Objekte mit Umgestaltungspotential:' : 'Properties with reconfiguration potential:',
     redesignEtw: isDE ? 'ETW: Grundrissoptimierung (z. B. WG-Konzept)' : 'Condominiums: layout optimisation (e.g., shared-living/WG concept)',
