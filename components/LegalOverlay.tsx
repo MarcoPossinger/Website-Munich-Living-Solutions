@@ -61,13 +61,13 @@ const LegalOverlay: React.FC<LegalOverlayProps> = ({ type, onClose, profile, lan
 
     processTitle: isDE ? 'Ankaufs- & Abwicklungsprozess' : 'Acquisition & Execution Process',
     process1: isDE ? 'Fachmännische Objektprüfung' : 'Professional property review / due diligence',
-    process2: isDE ? 'Kurze Entscheidungswege' : 'Short decision-making paths',
-    process3: isDE ? 'Schnelle Angebotsabgabe' : 'Fast offer submission',
+    process2: isDE ? 'Kurze, effiziente Entscheidungsstrukturen' : 'Short, efficient decision-making structures',
+    process3: isDE ? 'Zügige Angebotsabgabe' : 'Prompt offer submission',
     process4: isDE
-      ? 'Schnelle Kaufentscheidung aufgrund klar definierter Ankaufsparameter'
-      : 'Fast purchase decision based on clearly defined acquisition criteria',
-    process5: isDE ? 'Schnelle Finanzierungszusage' : 'Fast financing confirmation',
-    process6: isDE ? 'Zeitnahe und unkomplizierte Abwicklung' : 'Timely and straightforward execution',
+      ? 'Schnelle Kaufentscheidung auf Basis klar definierter Ankaufsparameter'
+      : 'Fast purchase decisions based on clearly defined acquisition criteria',
+    process5: isDE ? 'Verlässliche Finanzierungszusage' : 'Reliable financing commitment',
+    process6: isDE ? 'Zeitnahe und unkomplizierte Abwicklung' : 'Timely and straightforward closing process',
 
     networkTitle: isDE ? 'Netzwerk & Partnerschaften' : 'Network & Partnerships',
     network1: isDE
