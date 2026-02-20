@@ -27,7 +27,7 @@ export const USER_PROFILE: ProfileData = {
   email: "marco.possinger@munichlivingsolutions.de",
   imprintEmail: "info@munichlivingsolutions.de",
 
-  linkedin: "https://www.linkedin.com/in/marco-briem-465323201/",
+  linkedin: "linkedin.com/in/marco-possinger-465323201",
   address: "Bürgermeister-Schneider-Weg 163, 85579 Neubiberg",
   registerCourt: "Amtsgericht München",
   registerNumber: "HRB 283403",
